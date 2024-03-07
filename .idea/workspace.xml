@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0980e7e-0dd3-48fc-aa65-7700366c8b10" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-    </list>
+    <list default="true" id="e0980e7e-0dd3-48fc-aa65-7700366c8b10" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,6 +41,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 7
 }]]></component>
@@ -72,7 +73,7 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.customStackTest">
+  <component name="RunManager" selected="JUnit.CustomStackTest">
     <configuration name="customStackTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -169,37 +170,28 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="customStackTest.searchStackOfSize_with_10_items_with_valuethatdoesntExist_returns_negative_1" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.CustomStack.customStackTest.searchStackOfSize_with_10_items_with_valuethatdoesntExist_returns_negative_1&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
+    <configuration name="CustomStackTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CustomStack.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.CustomStack.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.CustomStack" />
+      <option name="MAIN_CLASS_NAME" value="org.CustomStack.CustomStackTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CustomStackTest" />
         <item itemvalue="Gradle.customStackTest" />
         <item itemvalue="Gradle.customStackTest.searchDefaultStack_10_with_values_10_20_30_40_50_for_30_returns_indexOf_2" />
         <item itemvalue="Gradle.customStackTest.searchDefaultStack_with_10_items_with_value_thatDoesNotExist_returns_negative_1" />
         <item itemvalue="Gradle.customStackTest.searchStackOfSize_10_with_values_10_20_30_40_50_for_30_returns_indexOf_2" />
-        <item itemvalue="Gradle.customStackTest.searchStackOfSize_with_10_items_with_valuethatdoesntExist_returns_negative_1" />
       </list>
     </recent_temporary>
   </component>
@@ -218,32 +210,32 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/customStackTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/CustomStackTest.java</url>
           <line>32</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/customStackTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/CustomStackTest.java</url>
           <line>37</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/customStackTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/CustomStackTest.java</url>
           <line>82</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/CustomStack/customStack.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/CustomStack/CustomStack.java</url>
           <line>49</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/customStackTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/CustomStackTest.java</url>
           <line>146</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/CustomStack/customStack.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/CustomStack/CustomStack.java</url>
           <line>67</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
