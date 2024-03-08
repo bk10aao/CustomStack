@@ -2,7 +2,7 @@ package org.CustomStack;
 
 import java.util.EmptyStackException;
 
-public class CustomStack<T> {
+public class CustomStack<T> implements Stack<T> {
     private T[] stack;
 
     private int stackSize = 32;

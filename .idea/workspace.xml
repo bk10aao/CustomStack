@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0980e7e-0dd3-48fc-aa65-7700366c8b10" name="Changes" comment="" />
+    <list default="true" id="e0980e7e-0dd3-48fc-aa65-7700366c8b10" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/CustomStack/Stack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/CustomStack/CustomStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/CustomStack/CustomStack.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,6 +39,7 @@
       <list>
         <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -65,6 +70,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.CustomStack" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -210,32 +218,32 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/customStackTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/CustomStackTest.java</url>
           <line>32</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/customStackTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/CustomStackTest.java</url>
           <line>37</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/customStackTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/CustomStackTest.java</url>
           <line>82</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/CustomStack/customStack.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/CustomStack/CustomStack.java</url>
           <line>49</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/customStackTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/org/CustomStack/CustomStackTest.java</url>
           <line>146</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/CustomStack/customStack.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/CustomStack/CustomStack.java</url>
           <line>67</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
