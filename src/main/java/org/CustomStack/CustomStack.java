@@ -1,6 +1,8 @@
 package org.CustomStack;
 
+import java.util.Arrays;
 import java.util.EmptyStackException;
+import java.util.Objects;
 
 public class CustomStack<T> implements Stack<T> {
     private T[] stack;
@@ -51,7 +53,7 @@ public class CustomStack<T> implements Stack<T> {
     public int search(Object o) {
         if(size == 0) return -1;
         for(int i = size - 1; i >= 0; i--)
-            if(stack[i] == o) return i;
+            if(stack[i].equals(o)) return i;
         return -1;
     }
 
@@ -76,5 +78,30 @@ public class CustomStack<T> implements Stack<T> {
         T[] newStack = (T[]) new Object[stackSize];
         System.arraycopy(stack, 0, newStack, 0, size);
         stack = newStack;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CustomStack<?> that = (CustomStack<?>) o;
+        return stackSize == that.stackSize && insertIndex == that.insertIndex && size == that.size && Arrays.equals(stack, that.stack);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(stackSize, insertIndex, size);
+        result = 31 * result + Arrays.hashCode(stack);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomStack{" +
+                "stack=" + Arrays.toString(stack) +
+                ", stackSize=" + stackSize +
+                ", insertIndex=" + insertIndex +
+                ", size=" + size +
+                '}';
     }
 }

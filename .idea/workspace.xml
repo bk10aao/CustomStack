@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0980e7e-0dd3-48fc-aa65-7700366c8b10" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/CustomStack/Stack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/CustomStack/CustomStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/CustomStack/CustomStack.java" afterDir="false" />
     </list>
@@ -234,7 +233,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/CustomStack/CustomStack.java</url>
-          <line>49</line>
+          <line>51</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -244,7 +243,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/CustomStack/CustomStack.java</url>
-          <line>67</line>
+          <line>69</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
