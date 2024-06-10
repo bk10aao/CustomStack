@@ -42,13 +42,13 @@ public class CustomStack<T> implements Stack<T> {
         return item;
     }
 
-    public T push(T a) {
+    public T push(final T a) {
         if(insertIndex == stackSize) expand();
         stack[insertIndex++] = a;
         return stack[++size - 1];
     }
 
-    public int search(Object o) {
+    public int search(final Object o) {
         if(size == 0) return -1;
         for(int i = size - 1; i >= 0; i--)
             if(stack[i].equals(o)) return i;
@@ -79,7 +79,7 @@ public class CustomStack<T> implements Stack<T> {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CustomStack<?> that = (CustomStack<?>) o;
