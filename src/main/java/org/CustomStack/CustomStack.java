@@ -25,9 +25,7 @@ public class CustomStack<T> implements Stack<T> {
     }
 
     public T peek() {
-        if (size == 0) {
-            throw new EmptyStackException();
-        }
+        if (size == 0) throw new EmptyStackException();
         return stack[size - 1];
     }
 

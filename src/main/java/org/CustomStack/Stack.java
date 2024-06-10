@@ -41,10 +41,4 @@ public interface Stack<T> {
      * @return Integer value of number of items in Stack
      */
     int getSize();
-
-    /**
-     * Return number of items in Stack including null values
-     * @return Integer value of items in Stack including null values
-     */
-    int getStackSize();
 }
