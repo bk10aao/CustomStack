@@ -95,11 +95,11 @@ public class CustomStack<T> implements Stack<T> {
 
     @Override
     public String toString() {
-        return "CustomStack{" +
-                "stack=" + Arrays.toString(stack) +
-                ", stackSize=" + stackSize +
-                ", insertIndex=" + insertIndex +
-                ", size=" + size +
-                '}';
+        if(size == 0)
+            return "{ }";
+        StringBuilder stringBuilder = new StringBuilder("{ ");
+        for(int i = 0; i < size; i++)
+            stringBuilder.append(stack[i]).append(", ");
+        return stringBuilder.replace(stringBuilder.lastIndexOf(", "), stringBuilder.length(), " }").toString();
     }
 }
