@@ -170,11 +170,11 @@ public class CustomStackTest {
     }
 
     @Test
-    public void givenStackOfValues_10_20_30_40_returnsCorrectString_on_toString() {
+    public void givenStackOfValues__0_10_20_30_40_returnsCorrectString_on_toString() {
         CustomStack<Integer> customStack = new CustomStack<>(10);
         for(int i = 0; i < 5; i++)
-            customStack.push((i + 1) * 10);
-        assertEquals("{ 10, 20, 30, 40, 50 }", customStack.toString());
+            customStack.push(i * 10);
+        assertEquals("{ 40, 30, 20, 10, 0 }", customStack.toString());
     }
 
     @Test

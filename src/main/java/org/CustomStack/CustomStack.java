@@ -98,7 +98,7 @@ public class CustomStack<T> implements Stack<T> {
         if(size == 0)
             return "{ }";
         StringBuilder stringBuilder = new StringBuilder("{ ");
-        for(int i = 0; i < size; i++)
+        for(int i = size - 1; i >= 0; i--)
             stringBuilder.append(stack[i]).append(", ");
         return stringBuilder.replace(stringBuilder.lastIndexOf(", "), stringBuilder.length(), " }").toString();
     }
