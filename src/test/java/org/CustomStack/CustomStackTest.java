@@ -133,7 +133,7 @@ public class CustomStackTest {
 
     @Test
     public void searchStackOfSize_10_with_no_values_returns_negative_1() {
-        CustomStack<Integer> customStack = new CustomStack<>();
+        CustomStack<Integer> customStack = new CustomStack<>(10);
         assertEquals(-1, customStack.search(10));
     }
 

@@ -25,25 +25,25 @@ public class CustomStack<T> implements Stack<T> {
     }
 
     public T peek() {
-        if (size == 0) throw new EmptyStackException();
+        if (size == 0)
+            throw new EmptyStackException();
         return stack[size - 1];
     }
 
     public T pop() {
-        if (size == 0) {
+        if (size == 0)
             throw new EmptyStackException();
-        }
         T item = stack[size - 1];
         stack[--size] = null;
-        if(size <= (stackSize / 4)) {
+        if(size <= (stackSize / 4))
             reduce();
-        }
         insertIndex--;
         return item;
     }
 
     public T push(final T a) {
-        if(insertIndex == stackSize) expand();
+        if(insertIndex == stackSize)
+            expand();
         stack[insertIndex++] = a;
         return stack[++size - 1];
     }
@@ -51,7 +51,8 @@ public class CustomStack<T> implements Stack<T> {
     public int search(final Object o) {
         if(size == 0) return -1;
         for(int i = size - 1; i >= 0; i--)
-            if(stack[i].equals(o)) return i;
+            if(stack[i].equals(o))
+                return i;
         return -1;
     }
 
@@ -67,7 +68,8 @@ public class CustomStack<T> implements Stack<T> {
     private void expand() {
         stackSize = stackSize * 2;
         T[] newStack = (T[]) new Object[stackSize];
-        if (insertIndex >= 0) System.arraycopy(stack, 0, newStack, 0, insertIndex);
+        if (insertIndex >= 0)
+            System.arraycopy(stack, 0, newStack, 0, insertIndex);
         stack = newStack;
     }
 
@@ -80,17 +82,17 @@ public class CustomStack<T> implements Stack<T> {
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         CustomStack<?> that = (CustomStack<?>) o;
         return stackSize == that.stackSize && insertIndex == that.insertIndex && size == that.size && Arrays.equals(stack, that.stack);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(stackSize, insertIndex, size);
-        result = 31 * result + Arrays.hashCode(stack);
-        return result;
+        return 31 * Objects.hash(stackSize, insertIndex, size) + Arrays.hashCode(stack);
     }
 
     @Override
