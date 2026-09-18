@@ -18,6 +18,7 @@ import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+import org.openjdk.jmh.runner.options.TimeValue;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -31,12 +32,11 @@ import java.util.Spliterator;
 import java.util.Stack;
 import java.util.concurrent.TimeUnit;
 
-@SuppressWarnings("unused")
 @State(Scope.Benchmark)
+@Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
+@Measurement(iterations = 10, time = 1, timeUnit = TimeUnit.SECONDS)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-@Warmup(iterations = 2, time = 500, timeUnit = TimeUnit.MILLISECONDS)
-@Measurement(iterations = 3, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 @Fork(1)
 public class StackBenchmark {
 
@@ -313,9 +313,15 @@ public class StackBenchmark {
 
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
-                .include(StackBenchmark.class.getSimpleName())
+                .include(CustomStackBenchmark.class.getSimpleName())
                 .forks(1)
-                .result("custom-stack-results.csv")
+                .warmupIterations(5)
+                .warmupTime(TimeValue.seconds(1))
+                .measurementIterations(10)
+                .measurementTime(TimeValue.seconds(1))
+                .mode(Mode.AverageTime)
+                .timeUnit(TimeUnit.NANOSECONDS)
+                .result("stack-results.csv")
                 .resultFormat(ResultFormatType.CSV)
                 .build();
 

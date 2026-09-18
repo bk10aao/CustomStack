@@ -98,12 +98,7 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
     public CustomStack(final int initialCapacity) {
         if (initialCapacity < 0)
             throw new IllegalArgumentException();
-        int capacity = 16;
-        while (capacity < initialCapacity && capacity > 0)
-            capacity <<= 1;
-        if (capacity <= 0)
-            capacity = Integer.MAX_VALUE;
-        this.stack = new Object[capacity];
+        this.stack = new Object[calculateCapacity(0, initialCapacity)];
     }
 
     /**
@@ -141,11 +136,16 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      */
     public synchronized boolean addAll(final Collection<? extends E> c) {
         requireNonNull(c);
-        if(c.isEmpty())
+        if (c.isEmpty())
             return false;
-        ensureCapacity(size + c.size());
-        for(E e : c)
-            stack[size++] = e;
+        final int newSize = c.size();
+        ensureCapacity(size + newSize);
+        if (c instanceof List<?> list && c instanceof RandomAccess) {
+            for (int i = 0; i < newSize; i++)
+                stack[size++] = list.get(i);
+        } else
+            for (E e : c)
+                stack[size++] = e;
         return true;
     }
 
@@ -164,7 +164,7 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
     public synchronized boolean addAll(final int index, final Collection<? extends E> c) {
         requireNonNull(c);
         checkIndex(index, size + 1);
-        if(c.isEmpty())
+        if (c.isEmpty())
             return false;
         return ensureAndInsertAll(index, c);
     }
@@ -196,7 +196,7 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      */
     @Override
     public synchronized CustomStack<E> clone() {
-        CustomStack<E> copy = new CustomStack<>(0);
+        CustomStack<E> copy = new CustomStack<>();
         copy.stack = Arrays.copyOf(stack, stack.length);
         copy.size = this.size;
         return copy;
@@ -232,16 +232,10 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      * @param minCapacity the desired minimum capacity
      */
     public synchronized void ensureCapacity(final int minCapacity) {
-        int oldCapacity = stack.length;
-        if (minCapacity > oldCapacity) {
-            int newCapacity = (oldCapacity == 0) ? 16 : oldCapacity << 1;
-            while (newCapacity < minCapacity && newCapacity > 0)
-                newCapacity <<= 1;
-            if (newCapacity <= 0)
-                newCapacity = Integer.MAX_VALUE;
-            stack = Arrays.copyOf(stack, newCapacity);
-        }
+        if (minCapacity > stack.length)
+            stack = Arrays.copyOf(stack, calculateCapacity(stack.length, minCapacity));
     }
+
 
     /**
      * Tests if this stack is empty.
@@ -320,7 +314,7 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      * @return the index of the last occurrence at or before {@code index}, or -1 if not found
      */
     public synchronized int lastIndexOf(final Object o, final int index) {
-        for(int i = index >= size ? size - 1 : index; i >= 0; i--)
+        for (int i = index >= size ? size - 1 : index; i >= 0; i--)
             if (Objects.equals(stack[i], o))
                 return i;
         return -1;
@@ -389,7 +383,7 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      * @return the {@code item} argument, for convenience in chaining
      */
     public synchronized E push(final E item) {
-        add(item);
+        ensureAndInsert(size, item);
         return item;
     }
 
@@ -422,7 +416,10 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
     public synchronized boolean remove(final Object o) {
         for(int i = 0; i < size; i++)
             if (Objects.equals(stack[i], o)) {
-                remove(i);
+                final int numMoved = size - i - 1;
+                if (numMoved > 0)
+                    System.arraycopy(stack, i + 1, stack, i, numMoved);
+                stack[--size] = null;
                 return true;
             }
         return false;
@@ -623,6 +620,13 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
         return Arrays.toString(copyOfRange(stack, 0, size, Object[].class));
     }
 
+    private static int calculateCapacity(final int oldCapacity, final int minCapacity) {
+        int newCapacity = (oldCapacity == 0) ? 16 : oldCapacity << 1;
+        while (newCapacity < minCapacity && newCapacity > 0)
+            newCapacity <<= 1;
+        return newCapacity <= 0 ? Integer.MAX_VALUE : newCapacity;
+    }
+
     /**
      * Grows the backing array if necessary to make room for one more element,
      * then inserts {@code element} at {@code index}, shifting any existing
@@ -632,15 +636,8 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      * @param element the element to insert
      */
     private void ensureAndInsert(final int index, final E element) {
-        int minCapacity = size + 1;
-        int oldCapacity = stack.length;
-        if (minCapacity > oldCapacity) {
-            int newCapacity = (oldCapacity == 0) ? 16 : oldCapacity << 1;
-            while (newCapacity < minCapacity && newCapacity > 0)
-                newCapacity <<= 1;
-            if (newCapacity <= 0)
-                newCapacity = Integer.MAX_VALUE;
-            stack = Arrays.copyOf(stack, newCapacity);
+        if (size + 1 > stack.length) {
+            stack = Arrays.copyOf(stack, calculateCapacity(stack.length, size + 1));
         }
         if (index < size)
             arraycopy(stack, index, stack, index + 1, size - index);
@@ -659,17 +656,11 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      *         with a non-empty collection)
      */
     private boolean ensureAndInsertAll(final int index, final Collection<? extends E> c) {
-        int numElements = c.size();
-        int minCapacity = size + numElements;
-        int oldCapacity = stack.length;
-        Object[] a = c.toArray();
-        if(minCapacity > oldCapacity) {
-            int newCapacity = (oldCapacity == 0) ? Math.max(16, minCapacity) : oldCapacity << 1;
-            while (newCapacity < minCapacity && newCapacity > 0)
-                newCapacity <<= 1;
-            if (newCapacity <= 0)
-                newCapacity = Integer.MAX_VALUE;
-            stack = Arrays.copyOf(stack, newCapacity);
+        final int numElements = c.size();
+        final Object[] a = c.toArray();
+
+        if (size + numElements > stack.length) {
+            stack = Arrays.copyOf(stack, calculateCapacity(stack.length, size + numElements));
         }
         if (index < size)
             arraycopy(stack, index, stack, index + numElements, size - index);
