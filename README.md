@@ -103,10 +103,10 @@ Geometric means (ns/op) calculated across all tested collection sizes, averaged 
 | `add(E)`                   | 104,179.2   | 106,259.1 | 1.02x  | **Statistically Equivalent** |
 | `add(int, E)`              | 2,079.2     | 2,074.9   | 1.00x  | **Statistically Equivalent** |
 | `addAll(Collection)`       | 61,796.2    | 62,356.5  | 1.01x  | **Statistically Equivalent** |
-| `addAll(int, Collection)`  | 3,741.0     | 3,831.9   | 1.02x  | **Statistically Equivalent** |
+| `addAll(int, Collection)`  | 3,741       | 3,831.9   | 1.02x  | **Statistically Equivalent** |
 | `capacity()`               | 26.3        | 37.6      | 1.43x  |          **Custom**          |
 | `clear()`                  | 12,089.5    | 13,201.5  | 1.09x  | **Statistically Equivalent** |
-| `clone()`                  | 8,618.8     | 9,110.0   | 1.06x  | **Statistically Equivalent** |
+| `clone()`                  | 8,618.8     | 9,110     | 1.06x  | **Statistically Equivalent** |
 | `contains(Object)`         | 16,110.1    | 17,024.4  | 1.06x  | **Statistically Equivalent** |
 | `containsAll(Collection)`  | 52,469.9    | 53,761.1  | 1.02x  | **Statistically Equivalent** |
 | `empty()`                  | 26.3        | 30.5      | 1.16x  |          **Custom**          |
@@ -128,13 +128,13 @@ Geometric means (ns/op) calculated across all tested collection sizes, averaged 
 | `remove(int)`              | 2,106.8     | 2,346.6   | 1.11x  |          **Custom**          |
 | `removeAll(Collection)`    | 254,554.2   | 257,245.3 | 1.01x  | **Statistically Equivalent** |
 | `retainAll(Collection)`    | 243,912.9   | 248,304.3 | 1.02x  | **Statistically Equivalent** |
-| `search(Object)`           | 9,935.7     | 10,196.0  | 1.03x  | **Statistically Equivalent** |
+| `search(Object)`           | 9,935.7     | 10,196    | 1.03x  | **Statistically Equivalent** |
 | `set(int, E)`              | 34.2        | 48.8      | 1.43x  |          **Custom**          |
 | `size()`                   | 26.5        | 32.5      | 1.22x  |          **Custom**          |
 | `sort(Comparator)`         | 56,875.5    | 58,291.6  | 1.02x  | **Statistically Equivalent** |
 | `spliterator()`            | 27.1        | 34.3      | 1.27x  |          **Custom**          |
 | `subList(int, int)`        | 27.5        | 60.9      | 2.22x  |          **Custom**          |
-| `toArray()`                | 5,911.7     | 5,845.0   | 1.01x  | **Statistically Equivalent** |
+| `toArray()`                | 5,911.7     | 5,845     | 1.01x  | **Statistically Equivalent** |
 | `toArray(T[])`             | 24,512.8    | 24,687.9  | 1.01x  | **Statistically Equivalent** |
 | `toString()`               | 866,374.5   | 851,541.5 | 1.02x  | **Statistically Equivalent** |
 | `trimToSize()`             | 5,716.4     | 5,925.3   | 1.04x  | **Statistically Equivalent** |
