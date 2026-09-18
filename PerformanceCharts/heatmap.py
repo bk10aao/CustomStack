@@ -94,7 +94,7 @@ cbar.ax.yaxis.label.set_color('#ffffff')
 cbar.ax.yaxis.label.set_fontsize(11)
 
 plt.tight_layout()
-output_filename = os.path.join(script_dir, 'custom_stack_performance_heatmap.png')
+output_filename = os.path.join(script_dir, 'heatmap.png')
 plt.savefig(output_filename, dpi=300, transparent=True)
 plt.close()
 
