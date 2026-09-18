@@ -267,7 +267,7 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      * @return the index of the first occurrence of the element, or -1 if not found
      */
     public synchronized int indexOf(final Object o) {
-        for(int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++)
             if (Objects.equals(stack[i], o))
                 return i;
         return -1;
@@ -283,7 +283,7 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      * @return the index of the first occurrence at or after {@code index}, or -1 if not found
      */
     public synchronized int indexOf(final Object o, final int index) {
-        for(int i = Math.max(index, 0); i < size; i++)
+        for (int i = Math.max(index, 0); i < size; i++)
             if (Objects.equals(stack[i], o))
                 return i;
         return -1;
@@ -356,7 +356,7 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      * @throws EmptyStackException if this stack is empty
      */
     public synchronized E peek() {
-        if(size == 0)
+        if (size == 0)
             throw new EmptyStackException();
         return (E) stack[size - 1];
     }
@@ -368,7 +368,7 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      * @throws EmptyStackException if this stack is empty
      */
     public synchronized E pop() {
-        if(size == 0)
+        if (size == 0)
             throw new EmptyStackException();
         E item = (E) stack[--size];
         stack[size] = null;
@@ -414,7 +414,7 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      * @return {@code true} if this stack contained the specified element
      */
     public synchronized boolean remove(final Object o) {
-        for(int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++)
             if (Objects.equals(stack[i], o)) {
                 final int numMoved = size - i - 1;
                 if (numMoved > 0)
@@ -440,7 +440,7 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
         Set<?> values = (c instanceof Set) ? (Set<?>) c : new HashSet<>(c);
         int x = 0;
         boolean modified = false;
-        for(int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++)
             if (!values.contains(stack[i]))
                 stack[x++] = stack[i];
             else
@@ -473,7 +473,7 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
                 stack[index++] = stack[i];
             else
                 modified = true;
-        if(modified) {
+        if (modified) {
             fill(stack, index, size, null);
             size = index;
         }
@@ -489,13 +489,13 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      *         object is not present
      */
     public synchronized int search(final Object o) {
-        if(o == null) {
+        if (o == null) {
             for (int i = size - 1; i >= 0; i--)
                 if (stack[i] == null)
                     return size - i;
             return -1;
         }
-        for(int i = size - 1; i >= 0; i--)
+        for (int i = size - 1; i >= 0; i--)
             if (stack[i].equals(o))
                 return size - i;
         return -1;
