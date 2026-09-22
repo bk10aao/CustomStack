@@ -2,8 +2,6 @@
 
 Implementation of a Java Stack backed by an array.
 
-All methods implemented are identical to those found in the Java Stack interface.
-
 ### Time Complexity
 
 | Method                       |      Custom      |       JDK        | Winner  |
