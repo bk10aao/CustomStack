@@ -1,6 +1,6 @@
 # Custom Stack
 
-Implementation of a Java Stack.
+Implementation of a Java Stack backed by an array.
 
 All methods implemented are identical to those found in the Java Stack interface.
 

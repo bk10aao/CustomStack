@@ -1,6 +1,7 @@
 package customstack;
 
 import java.io.Serial;
+import java.io.Serializable;
 import java.util.AbstractList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -54,7 +55,7 @@ import static java.util.Objects.requireNonNull;
  * @see <a href="https://github.com/bk10aao">GitHub account bk10aao</a>
  * @see <a href="https://github.com/bk10aao/CustomStack>Repository</a>
  */
-public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Cloneable, java.io.Serializable {
+public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Cloneable, Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
