@@ -141,10 +141,10 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
             return false;
         final int newSize = c.size();
         ensureCapacity(size + newSize);
-        if (c instanceof List<?> list && c instanceof RandomAccess) {
+        if (c instanceof List<?> list && c instanceof RandomAccess)
             for (int i = 0; i < newSize; i++)
                 stack[size++] = list.get(i);
-        } else
+        else
             for (E e : c)
                 stack[size++] = e;
         return true;
@@ -636,9 +636,8 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      * @param element the element to insert
      */
     private void ensureAndInsert(final int index, final E element) {
-        if (size + 1 > stack.length) {
+        if (size + 1 > stack.length)
             stack = Arrays.copyOf(stack, calculateCapacity(stack.length, size + 1));
-        }
         if (index < size)
             arraycopy(stack, index, stack, index + 1, size - index);
         stack[index] = element;
@@ -658,10 +657,8 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
     private boolean ensureAndInsertAll(final int index, final Collection<? extends E> c) {
         final int numElements = c.size();
         final Object[] a = c.toArray();
-
-        if (size + numElements > stack.length) {
+        if (size + numElements > stack.length)
             stack = Arrays.copyOf(stack, calculateCapacity(stack.length, size + numElements));
-        }
         if (index < size)
             arraycopy(stack, index, stack, index + numElements, size - index);
         arraycopy(a, 0, stack, index, numElements);
