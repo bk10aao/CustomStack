@@ -567,11 +567,10 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      * @return a {@code Spliterator} over the elements in this stack
      */
     public synchronized Spliterator<E> spliterator() {
-        return Spliterators.spliterator(stack, 0, size,
-                Spliterator.ORDERED |
-                                    Spliterator.SIZED |
-                                    Spliterator.SUBSIZED |
-                                    Spliterator.IMMUTABLE);
+        return Spliterators.spliterator(stack, 0, size, Spliterator.ORDERED |
+                                                                    Spliterator.SIZED |
+                                                                    Spliterator.SUBSIZED |
+                                                                    Spliterator.IMMUTABLE);
     }
 
     /**
