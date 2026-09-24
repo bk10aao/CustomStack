@@ -92,6 +92,13 @@ Implementation of a Java Stack backed by an array.
 
 # Performance Comparison
 
+Geometric means (ns/op) calculated across all tested collection sizes, averaged over 10 benchmark runs. Margins under
+1.10x are treated as noise-level ties because the source data lacks per-run variance metrics.
+
+
+
+# Performance Charts
+
 Geometric means (ns/op) calculated across all tested collection sizes, averaged over 10 benchmark runs. Margins under 
 1.10x are treated as noise-level ties because the source data lacks per-run variance metrics.
 
