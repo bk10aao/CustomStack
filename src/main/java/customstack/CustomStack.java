@@ -139,7 +139,7 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
         requireNonNull(c);
         if (c.isEmpty())
             return false;
-        final int newSize = c.size();
+        int newSize = c.size();
         ensureCapacity(size + newSize);
         if (c instanceof List<?> list && c instanceof RandomAccess)
             for (int i = 0; i < newSize; i++)
@@ -345,9 +345,8 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      *         ({@code index < 0 || index > size()})
      */
     public synchronized ListIterator<E> listIterator(final int index) {
-        Objects.checkIndex(index, size + 1);
-        E[] snapshot = (E[]) copyOfRange(stack, 0, size);
-        return asList(snapshot).listIterator(index);
+        checkIndex(index, size + 1);
+        return asList((E[]) copyOfRange(stack, 0, size)).listIterator(index);
     }
 
     /**
@@ -417,9 +416,9 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
     public synchronized boolean remove(final Object o) {
         for (int i = 0; i < size; i++)
             if (Objects.equals(stack[i], o)) {
-                final int numMoved = size - i - 1;
-                if (numMoved > 0)
-                    System.arraycopy(stack, i + 1, stack, i, numMoved);
+                int index = size - i - 1;
+                if (index > 0)
+                    System.arraycopy(stack, i + 1, stack, i, index);
                 stack[--size] = null;
                 return true;
             }
@@ -446,12 +445,12 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
                 stack[x++] = stack[i];
             else
                 modified = true;
-        if (modified) {
-            for (int i = x; i < size; i++)
-                stack[i] = null;
-            size = x;
-        }
-        return modified;
+        if (!modified)
+            return false;
+        for (int i = x; i < size; i++)
+            stack[i] = null;
+        size = x;
+        return true;
     }
 
     /**
@@ -474,11 +473,11 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
                 stack[index++] = stack[i];
             else
                 modified = true;
-        if (modified) {
-            fill(stack, index, size, null);
-            size = index;
-        }
-        return modified;
+        if(!modified)
+            return false;
+        fill(stack, index, size, null);
+        size = index;
+        return true;
     }
 
     /**
@@ -537,8 +536,7 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      *          ordering} should be used
      */
     public synchronized void sort(final Comparator<? super E> c) {
-        Comparator<? super Object> comparator = (Comparator<? super Object>) c;
-        Arrays.sort(stack, 0, size, comparator);
+        Arrays.sort(stack, 0, size, (Comparator<? super Object>) c);
     }
 
     /**
@@ -655,8 +653,8 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      *         with a non-empty collection)
      */
     private boolean ensureAndInsertAll(final int index, final Collection<? extends E> c) {
-        final int numElements = c.size();
-        final Object[] a = c.toArray();
+        int numElements = c.size();
+        Object[] a = c.toArray();
         if (size + numElements > stack.length)
             stack = Arrays.copyOf(stack, calculateCapacity(stack.length, size + numElements));
         if (index < size)
@@ -686,7 +684,9 @@ public class CustomStack<E> extends AbstractList<E> implements RandomAccess, Clo
      */
     private static class SubStackList<E> extends AbstractList<E> {
         private final CustomStack<E> stack;
+
         private final int fromIndex;
+
         private int subSize;
 
         /**
